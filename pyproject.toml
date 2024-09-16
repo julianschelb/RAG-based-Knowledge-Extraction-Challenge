@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ragchallenge"
+version = "0.1.0"
+description = "Your task is to design and implement a data pipeline that processes technical documentation and uses RAG to let people ask questions on how to perform some of these technical tasks."
+authors = ["Julian Schelb <julian.schelb@uni-konstanz.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+langchain = "^0.3.0"
+transformers = "^4.44.2"
+torch = "^2.4.1"
+fastapi = {extras = ["standard"], version = "^0.114.2"}
+annoy = "^1.17.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
