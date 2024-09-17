@@ -20,6 +20,9 @@ unstructured = {extras = ["md"], version = "^0.15.12"}
 sentence-transformers = "3.1.0"
 sentencepiece = "^0.2.0"
 faiss-cpu = "^1.8.0.post1"
+uvicorn = "^0.30.6"
+pydantic-settings = "^2.5.2"
+gradio = "^4.44.0"
 
 
 [build-system]
