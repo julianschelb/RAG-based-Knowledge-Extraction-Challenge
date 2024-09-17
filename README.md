@@ -9,9 +9,11 @@ This repo contains a project that focuses on building a scalable data pipeline u
 
 This repository contains a GUI component as well as a microservice backend for RAG-based question answering. It implements advanced features such as query expansion through paraphrasing of the original query and hypothetical question generation to augment the documents in the database.
 
+
 <p align="center">
-  <img src="./static/system_architecture.png" alt="Alt text" />
+  <img src="./static/system_architecture.png" alt="Alt text" width="600" />
 </p>
+
 
 
 - The REST API is implemented using [FastAPI](https://fastapi.tiangolo.com/) for efficient data handling.
