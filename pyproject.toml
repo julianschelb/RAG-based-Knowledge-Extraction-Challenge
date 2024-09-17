@@ -6,12 +6,20 @@ authors = ["Julian Schelb <julian.schelb@uni-konstanz.de>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10,<3.11"
 langchain = "^0.3.0"
 transformers = "^4.44.2"
 torch = "^2.4.1"
 fastapi = {extras = ["standard"], version = "^0.114.2"}
 annoy = "^1.17.3"
+pandas = "^2.2.2"
+numpy = "1.22.4"
+datasets = "^3.0.0"
+langchain-community = "^0.3.0"
+unstructured = {extras = ["md"], version = "^0.15.12"}
+sentence-transformers = "3.1.0"
+sentencepiece = "^0.2.0"
+faiss-cpu = "^1.8.0.post1"
 
 
 [build-system]
