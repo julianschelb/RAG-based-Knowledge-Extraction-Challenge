@@ -7,7 +7,7 @@ This repo contains a project that focuses on building a scalable data pipeline u
 
 ## Overview
 
-This repository contains a GUI component as well as a microservice backend for RAG-based question answering. It implements advanced features such as query expansion through paraphrasing of the original query and hypothetical question generation to augment the documents in the database.
+This repository contains a GUI component as well as a microservice backend for RAG-based question answering. It implements advanced features such as `Query Expansion` through paraphrasing of the original query and `Hypothetical Question Generation` to augment the documents in the database.
 
 
 <p align="center">
@@ -89,6 +89,29 @@ Following, we describe the process we implemented to read the markdown files and
 1. We augment each chunk with the original file title and section title to provide more contextual information. This helps the encoder model distinguish between different domains such as Conda, Git, Regex, etc.
 2. Additionally, we augment each chunk using `Hypothetical Question Generation`. The idea is to ask a generative language model to come up with questions a user might ask, further assisting the encoder model in matching the chunk with a potential user query.
 
+**Example of a processed document:**
+
+The final document is augmented with the original section title and hypothetical questions.
+
+```
+Page title: Initializing A Repository In An Existing Directory
+Filename: git tutorial
+
+Related Questions:
+- 1. If I have a directory that is not currently being version controlled with Git, what command do I type to start controlling it with Git? (Answer: $ git init)
+- 2. Where in the file system should I navigate to in order to type the command to start controlling my project directory with Git? (Answer: To the project directory)
+- 3. How do the directions for navigating to the project directory differ depending on the operating system? (Answer:
+
+Page Content:
+If you have a project directory that is currently not under version control and you want to start controlling it with Git, you first need to go to that project's directory. If you've never done this, it looks a little different depending on which system you're running: for Linux:
+$ cd /home/user/my_project for macOS:
+$ cd /Users/user/my_project for Windows:
+$ cd C:/Users/user/my_project and type:
+$ git init This creates a new subdirectory named .git that contains all of your necessary repository files - a Git repository skeleton. At this point, nothing in your project is tracked yet. See Git Internals for 26 more information about exactly what files are contained in the .git directory you just created.
+
+If you want to start version-controlling existing files (as opposed to an empty directory), you should probably begin tracking those files and do an initial commit. You can accomplish that with a few git add commands that specify the files you want to track, followed by a git commit:
+$ git add *.c
+```
 
 ### Retrieval and Question-Answering Process
 
@@ -99,6 +122,17 @@ Following, we describe the process we implemented to read the markdown files and
 4. Finally, a large language model (LLM) is asked to use the combined context to answer the original query.
 
 
+**Example for generated Hypothetical Questions:**
+
+```
+Document: Conda is an open-source package management system and environment management system that runs on Windows, macOS, and Linux. Conda quickly installs, runs, and updates packages and their dependencies.
+
+
+Generated Hypothetical Questions:
+1. How does Conda differ from other package management systems in terms of installation and updating procedures?
+2. Can you describe the cross-platform compatibility of Conda, and how does it affect its usability for developers working on different operating systems?
+3. How does Conda ensure that the dependencies of a package are also installed and updated alongside it, and what impact does this have on the overall package management experience?
+```
 
 ## Further Thoughts on System Design and Scalability
 
