@@ -2,7 +2,7 @@
 from langchain.schema import HumanMessage, SystemMessage
 from langchain.prompts import ChatPromptTemplate
 from ragchallenge.api.llm import LLM
-from ragchallenge.api.utils.queryextender import QueryParaphraser
+from ragchallenge.api.interfaces.paraphraser import QueryParaphraser
 
 # ---------------------------- Load Paraphraser --------------------------- #
 

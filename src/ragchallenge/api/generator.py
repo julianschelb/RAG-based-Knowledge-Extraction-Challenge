@@ -2,7 +2,7 @@
 from langchain.schema import HumanMessage, SystemMessage
 from langchain.prompts import ChatPromptTemplate
 from ragchallenge.api.llm import LLM
-from ragchallenge.api.utils.questiongenerator import HypotheticalQuestionGenerator
+from ragchallenge.api.interfaces.generator import HypotheticalQuestionGenerator
 
 # ---------------------------- Load Paraphraser --------------------------- #
 

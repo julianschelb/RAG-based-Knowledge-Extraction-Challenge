@@ -3,7 +3,7 @@ from langchain.prompts import ChatPromptTemplate
 from ragchallenge.api.database import DATABASE
 from ragchallenge.api.paraphraser import PARAPHRASER
 from ragchallenge.api.llm import LLM
-from ragchallenge.api.utils.chatmodelexpanded import QuestionAnsweringWithQueryExpansion
+from ragchallenge.api.interfaces.ragmodelexpanded import QuestionAnsweringWithQueryExpansion
 
 messages = [
     SystemMessage(

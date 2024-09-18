@@ -50,6 +50,7 @@ class QuestionAnsweringWithQueryExpansion:
             retrieved_docs = self.knowledge_vector_database.similarity_search(
                 q, k=k)  # Retrieve 1 document per query
             documents.extend([doc.page_content for doc in retrieved_docs])
+
         return documents
 
     def answer_question(self, question: str) -> str:
@@ -61,17 +62,19 @@ class QuestionAnsweringWithQueryExpansion:
         """
         # Expand the query using the hypothetical question generator
         questions = self.expand_query(question)
-        # print(f"Cuestions:\n{questions}\n")
-
         # Retrieve documents for each query (original + expanded)
         context_documents = self.retrieve_documents(questions)
-
         # Combine the retrieved documents into one context string
         context = "\n".join(context_documents)
-        # print(f"Context:\n{context}\n")
 
         # Invoke the retrieval chain with the combined context and original question
-        return self.retrieval_chain.invoke({"context": context, "question": question})
+        answer = self.retrieval_chain.invoke(
+            {"context": context, "question": question})
+
+        reponse = {"answer": answer, "question": questions,
+                   "documents": context_documents}
+
+        return reponse
 
 
 # Example usage of the class

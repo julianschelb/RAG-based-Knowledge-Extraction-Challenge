@@ -15,11 +15,11 @@ async def generate_answer(request: ChatRequest):
     try:
         # Get the user's question from the last message in the list
         user_message = request.messages[-1].content
-        answer = RAG_MODEL.answer_question(user_message)
-        request.messages.append(ChatMessage(role="system", content=answer))
+        response = RAG_MODEL.answer_question(user_message)
+        request.messages.append(ChatMessage(role="system", content=response.get("answer")))
 
         # Return the updated messages list with the generated answer appended
-        return ChatResponse(messages=request.messages)
+        return ChatResponse(messages=request.messages, questions=response.get("question"), documents=response.get("documents"))
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

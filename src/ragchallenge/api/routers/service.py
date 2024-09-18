@@ -17,10 +17,10 @@ import os
 # from fastapi import HTTPException, status
 # from app.schemas.userRequest import UserRequest, SystemResponse
 
-from ragchallenge.api.utils.chatmodel import QuestionAnsweringWithRAG
-from ragchallenge.api.utils.chatmodelexpanded import QuestionAnsweringWithQueryExpansion
-from ragchallenge.api.utils.documentstore import DocumentStore
-from ragchallenge.api.utils.questiongenerator import HypotheticalQuestionGenerator
+from ragchallenge.api.interfaces.ragmodel import QuestionAnsweringWithRAG
+from ragchallenge.api.interfaces.ragmodelexpanded import QuestionAnsweringWithQueryExpansion
+from ragchallenge.api.interfaces.database import DocumentStore
+from ragchallenge.api.interfaces.generator import HypotheticalQuestionGenerator
 
 router = APIRouter(responses={404: {"description": "Not Found"}})
 

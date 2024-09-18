@@ -4,7 +4,7 @@ from langchain.schema import HumanMessage, SystemMessage
 from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 
 
-from ragchallenge.api.utils.questiongenerator import HypotheticalQuestionGenerator
+from ragchallenge.api.interfaces.generator import HypotheticalQuestionGenerator
 from ragchallenge.api.schemas.messages import DocumentRequest, QuestionsResponse
 
 router = APIRouter(responses={404: {"description": "Not Found"}})

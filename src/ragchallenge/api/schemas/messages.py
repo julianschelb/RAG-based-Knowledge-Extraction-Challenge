@@ -80,6 +80,12 @@ class ChatResponse(BaseModel):
         ]
     )
 
+    questions: List[str] = Field([], title="Questions", description="Paraphrased queries", example=[
+                                 "What is Conda?", "What is Conda?", "What is Conda?"])
+
+    documents: List[str] = Field([], title="Documents", description="Documents", example=[
+        "Conda is an open-source package management system and environment management system that runs on Windows, macOS, and Linux."])
+
     class Config:
         json_schema_extra = {
             "example": {

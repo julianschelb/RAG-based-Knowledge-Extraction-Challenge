@@ -1,4 +1,4 @@
-from ragchallenge.api.utils.documentstore import DocumentStore
+from ragchallenge.api.interfaces.database import DocumentStore
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .config import Settings
