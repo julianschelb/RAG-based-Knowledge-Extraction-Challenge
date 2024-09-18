@@ -3,43 +3,7 @@
 This repo contains a project that focuses on building a scalable data pipeline using Retrieval Augmented Generation (RAG) techniques to process technical documentation. It enables users to ask and receive answers to specific technical questions by making the information more accessible and interactive.
 
 <!-- toc -->
-
-
-
-<style>
-.button-container {
-    text-align: center;
-    margin-top: 20px; /* Adjust the top margin as needed */
-}
-
-.button {
-    display: inline-block;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold; /* Make the text bolder */
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
-    background: linear-gradient(to bottom right, #4CAF50, #33691E);
-    color: white;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-
-.button:hover {
-   background: linear-gradient(to bottom right, #33691E, #4CAF50);
-   box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
-   transform: scale(1.05); /* Slightly enlarge the button on hover */
-   color: white;
-}
-</style>
-
-<div class="button-container">
-  <a href="http://merkur72.inf.uni-konstanz.de:7860/" target="_blank" rel="noopener noreferrer" class="button">GUI Demo</a>
-  <a href="http://merkur72.inf.uni-konstanz.de:8080/docs" target="_blank" rel="noopener noreferrer" class="button">API Demo</a>
-</div>
+[GUI Demo](${http://merkur72.inf.uni-konstanz.de:7860}) | [API Demo](${http://merkur72.inf.uni-konstanz.de:8080/docs})
 
 ## Overview
 
