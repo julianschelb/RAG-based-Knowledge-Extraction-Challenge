@@ -14,11 +14,23 @@ This repository contains a GUI component as well as a microservice backend for R
   <img src="./static/system_architecture.png" alt="Alt text" width="600" />
 </p>
 
-
-
 - The REST API is implemented using [FastAPI](https://fastapi.tiangolo.com/) for efficient data handling.
 - The user interface is built with [Gradio](https://gradio.app/) for easy interaction.
 - The backend is built around [LangChain](https://langchain.com/) and integrated with the [Hugging Face](https://huggingface.co/) ecosystem, utilizing [Transformers](https://huggingface.co/transformers/) for advanced language processing.
+
+
+## Screenshots
+
+**User Interface:**
+<p align="center">
+  <img src="./static/screenshot_gui.png" alt="Alt text" width="600" />
+</p>
+
+**API Endpoints:**
+<p align="center">
+  <img src="./static/screenshot_api.png" alt="Alt text" width="600" />
+</p>
+
 
 ## Installation
 
