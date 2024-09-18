@@ -59,6 +59,8 @@ This setup assumes that Python 3.10.8 is installed. If not, you can use [pyenv](
    ```
    Follow the prompts to enter your Hugging Face token, which can be obtained from your [Hugging Face account settings](https://huggingface.co/settings/tokens).
 
+5. Rename the `.env-template` file to `.env`.  
+
 ## Start Backend
 
 To start a REST API implemented with FastAPI by running `python main.py`. Simply run the following command in your terminal:
