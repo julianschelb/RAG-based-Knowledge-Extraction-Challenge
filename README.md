@@ -5,6 +5,42 @@ This repo contains a project that focuses on building a scalable data pipeline u
 <!-- toc -->
 
 
+
+<style>
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* Adjust the top margin as needed */
+}
+
+.button {
+    display: inline-block;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold; /* Make the text bolder */
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #4CAF50, #33691E);
+    color: white;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+   background: linear-gradient(to bottom right, #33691E, #4CAF50);
+   box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+   transform: scale(1.05); /* Slightly enlarge the button on hover */
+   color: white;
+}
+</style>
+
+<div class="button-container">
+  <a href="http://merkur72.inf.uni-konstanz.de:7860/" target="_blank" rel="noopener noreferrer" class="button">GUI Demo</a>
+  <a href="http://merkur72.inf.uni-konstanz.de:8080/docs" target="_blank" rel="noopener noreferrer" class="button">API Demo</a>
+</div>
+
 ## Overview
 
 This repository contains a GUI component as well as a microservice backend for RAG-based question answering. It implements advanced features such as `Query Expansion` through paraphrasing of the original query and `Hypothetical Question Generation` to augment the documents in the database.
