@@ -1,19 +1,17 @@
+from ragchallenge.api.utils.documentstore import DocumentStore
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .config import Settings
-from .routers import service
+# from .routers import service
+from .routers import qa_service
+from .routers import query_service
+from .routers import question_service
 
 # =================== Settings ===================
 
 # Load application settings
 settings = Settings()
 
-tags_metadata = [
-    {
-        "name": "service",
-        "description": "Entity Linking",
-    },
-]
 app = FastAPI(
     title=settings.app_name,
     version=settings.app_version,
@@ -27,7 +25,6 @@ app = FastAPI(
         "name": settings.license_name,
         "url": settings.license_url,
     },
-    openapi_tags=tags_metadata,
 )
 
 # CORS Settings
@@ -44,5 +41,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ---------------------------- Include Routers -------------------------- #
+
 # Register sub modules
-app.include_router(service.router, tags=["service"])
+app.include_router(qa_service.router, tags=["Answer Generation"])
+app.include_router(query_service.router, tags=["Query Expansion"])
+app.include_router(question_service.router, tags=[
+                   "Hypothetical Question Generation"])

@@ -42,6 +42,7 @@ class QuestionAnsweringWithRAG:
 
 # Example usage of the class
 if __name__ == "__main__":
+
     # Define the prompt template to generate an answer based on context
     messages = [
         SystemMessage(
@@ -86,7 +87,8 @@ if __name__ == "__main__":
     qa_rag = QuestionAnsweringWithRAG(
         knowledge_vector_database=knowledge_vector_database,
         model=model,
-        prompt_template=prompt_template
+        prompt_template=prompt_template,
+
     )
 
     # Ask a question

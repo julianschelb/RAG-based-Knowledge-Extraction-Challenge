@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     license_name: str = ""
     license_url: str = ""
     data_dir: str = "data"
+    embedding_model: str = ""
+    embedding_model_device: str = "cpu"
+    chat_model: str = ""
+    chat_model_task: str = ""
 
     class Config:
         env_file = ".env"

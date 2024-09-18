@@ -30,6 +30,9 @@ class DocumentStore:
             persist_directory=persist_directory,
         )
 
+        self.tokenizer = BertTokenizer.from_pretrained(
+            "bert-base-uncased", clean_up_tokenization_spaces=True)
+
     def validate_directory(self, directory_path: str) -> None:
         """Validate the directory path."""
         if not isinstance(directory_path, str):
@@ -62,7 +65,7 @@ class DocumentStore:
     def clean_string(self, text: str) -> str:
         """Remove special characters and return the cleaned string."""
         text = re.sub(r'\s+', ' ', text).strip()
-        return re.sub(r'[^a-zA-Z]', '', text)
+        return re.sub(r'[^a-zA-Z ]', '', text)
 
     def clean_source(self, path: str) -> str:
         """Extract the filename from the path, remove the extension, replace non-alpha with spaces, and clean it."""
@@ -83,8 +86,8 @@ class DocumentStore:
             pre_header_content = sections[0].strip()
             pre_header_metadata = {
                 **document.metadata,
-                "title": "Introduction" if "title" not in document.metadata else document.metadata["title"],
-                "cleaned_title": self.clean_string("Introduction"),
+                "title": "" if "title" not in document.metadata else document.metadata["title"],
+                "cleaned_title": self.clean_string("") if "title" not in document.metadata else self.clean_string(document.metadata["title"]),
                 "cleaned_source": self.clean_source(document.metadata.get("source", "")),
             }
             pre_header_doc = document.model_copy(
@@ -116,20 +119,31 @@ class DocumentStore:
         """Split a list of documents by a given header."""
         return [doc for document in documents for doc in self.split_single_document(document, header)]
 
+    def get_length(self, text: str) -> int:
+        tokens = self.tokenizer.tokenize(text)
+        return len(tokens)
+
+    def filter_documents_by_token_length(self, documents: List[Document], min_token_length: int = 25) -> List[Document]:
+        """
+        Filter out documents that have fewer than the specified minimum number of tokens.
+
+        :param documents: List of Document objects.
+        :param tokenizer: A tokenizer to tokenize the text.
+        :param min_token_length: Minimum number of tokens required to include the document.
+        :return: List of Document objects that meet the token length requirement.
+        """
+
+        # Use list comprehension to filter documents based on token length
+        return [doc for doc in documents if self.get_length(doc.page_content) >= min_token_length]
+
     def split_documents_by_token_count(self, documents: List[Document], chunk_size: int = 256, chunk_overlap: int = 192) -> List[Document]:
         """Splits documents using BERT token count."""
-        tokenizer = BertTokenizer.from_pretrained(
-            "bert-base-uncased", clean_up_tokenization_spaces=True)
-
-        def get_length(text: str) -> int:
-            tokens = tokenizer.tokenize(text)
-            return len(tokens)
 
         custom_separators = ["\n\n", "\n", ".", " ", ""]
         text_splitter = RecursiveCharacterTextSplitter(
             chunk_size=chunk_size,
             chunk_overlap=chunk_overlap,
-            length_function=get_length,
+            length_function=self.get_length,
             is_separator_regex=False,
             separators=custom_separators
         )

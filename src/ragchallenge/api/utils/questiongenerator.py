@@ -1,4 +1,5 @@
 import os
+from typing import List
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema import SystemMessage, HumanMessage
 from langchain_huggingface import ChatHuggingFace
@@ -42,6 +43,10 @@ class HypotheticalQuestionGenerator:
 
         return hypothetical_questions
 
+    def expand_query(self, question: str) -> List[str]:
+        """Generate alternative questions using the question generator."""
+        return [question] + self.generate(question)
+
 
 # Example usage of the class
 if __name__ == "__main__":
@@ -49,13 +54,13 @@ if __name__ == "__main__":
     messages_hypothetical = [
         SystemMessage(
             role="system",
-            content="Generate 5 hypothetical questions based on the following text. "
+            content="Generate 3 hypothetical questions based on the following text. "
                     "The results should be formatted as a list, with each question separated by a newline."
         ),
         HumanMessage(
             role="user",
             content="Here is the text: {text}\n"
-                    "Generate 5 hypothetical questions about the above text."
+                    "Generate 3 hypothetical questions about the above text."
         ),
     ]
 
@@ -81,7 +86,6 @@ if __name__ == "__main__":
         repo_id=repo_id,
         task=task,
         **generation_params,  # Pass the generation parameters
-        huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN")
     )
 
     # Return the LangChain HuggingFacePipeline object with the endpoint
