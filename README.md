@@ -22,14 +22,10 @@ This repository contains a GUI component as well as a microservice backend for R
 ## Screenshots
 
 **User Interface:**
-<p align="center">
-  <img src="./static/screenshot_gui.png" alt="Alt text" width="600" />
-</p>
+!["User Interface"](./static/screenshot_gui.png)
 
 **API Endpoints:**
-<p align="center">
-  <img src="./static/screenshot_api.png" alt="Alt text" width="600" />
-</p>
+!["API Endpoints"](./static/screenshot_api.png)
 
 
 ## Installation
