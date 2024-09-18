@@ -129,11 +129,17 @@ $ git add *.c
 
 ### Retrieval and Question-Answering Process
 
+<p align="center">
+  <img src="./static/question-answering-pipeline.png" alt="Alt text" width="600" />
+</p>
+
+
 
 1. The user enters a query.
 2. To perform `Query Expansion`, we ask a model to paraphrase the original query, generating three alternative queries. The intuition is that the model can generate queries focusing on different aspects of the input prompt.
 3. For each paraphrased query, as well as the original one, we retrieve *k* documents from the vector store.
-4. Finally, a large language model (LLM) is asked to use the combined context to answer the original query.
+4. The context and the original query are combined in a question answering prompt.
+5. Finally, a large language model (LLM) is asked to use the combined context to answer the original query.
 
 
 **Example for generated Hypothetical Questions:**
