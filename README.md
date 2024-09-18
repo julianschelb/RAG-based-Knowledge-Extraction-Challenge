@@ -155,3 +155,13 @@ Generated Hypothetical Questions:
 
 ## Further Thoughts on System Design and Scalability
 
+To enhance scalability in the current system, I recommend the following architectural changes based on best practices for designing scalable systems:
+
+- **Microservices Architecture**: Transitioning to a microservices approach by decoupling services based on their specific concerns will allow for more efficient scaling and faster deployment of new features. This will also enable independent scaling of each service, with a load balancer to distribute traffic across service instances, improving overall system performance under high load.
+
+- **Vendor-Agnostic Abstraction Layer**: Introducing a common interface through wrapper classes for LLM and database vendors will decouple the system from specific vendors. This not only provides flexibility in switching vendors without significant refactoring but also allows scaling across multiple providers to meet demand more effectively.
+
+- **Controller/Worker Scaling Model**: Implementing a controller/worker architecture will provide dynamic vertical scaling capabilities. Each LLM worker instance would handle a specific model, and the controller could dynamically assign additional worker instances as needed. This ensures efficient resource allocation, whether adding workers for different models or increasing capacity to handle surges in demand for existing models.
+
+
+!["Pipeline"](./static/scaleable_system_architecture.png)
