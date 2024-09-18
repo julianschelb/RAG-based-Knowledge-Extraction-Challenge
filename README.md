@@ -129,10 +129,9 @@ $ git add *.c
 
 ### Retrieval and Question-Answering Process
 
-<p align="center">
-  <img src="./static/question-answering-pipeline.png" alt="Alt text" width="600" />
-</p>
 
+
+!["Pipeline"](./static/question-answering-pipeline.png)
 
 
 1. The user enters a query.
