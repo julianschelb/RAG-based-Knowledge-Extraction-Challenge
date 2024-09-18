@@ -3,7 +3,7 @@
 This repo contains a project that focuses on building a scalable data pipeline using Retrieval Augmented Generation (RAG) techniques to process technical documentation. It enables users to ask and receive answers to specific technical questions by making the information more accessible and interactive.
 
 <!-- toc -->
-[GUI Demo](${http://merkur72.inf.uni-konstanz.de:7860}) | [API Demo](${http://merkur72.inf.uni-konstanz.de:8080/docs})
+[GUI Demo](http://merkur72.inf.uni-konstanz.de:7860) | [API Demo](http://merkur72.inf.uni-konstanz.de:8080/docs)
 
 ## Overview
 
